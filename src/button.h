@@ -39,4 +39,3 @@ class Button {
 		bool     _flag  = false;
 		uint32_t _timer = 0;
 };
-
