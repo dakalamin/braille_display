@@ -6,11 +6,13 @@
 #include "translation.h"
 
 
-Button button(buttonPin);
+Button* proceedButton;
 
 void setup() {
 	Serial.begin(BAUD_RATE);
 	Serial.println();
+
+	proceedButton = new Button(buttonPin);
 
 	pinMode(latchPin, OUTPUT);
 	pinMode(dataPin,  OUTPUT);
@@ -20,6 +22,6 @@ void setup() {
 }
 
 void loop() {
-	if (button.clicked() && prepareToShow())
+	if (proceedButton->clicked() && prepareToShow())
 		showBuffer();
 }
