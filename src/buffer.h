@@ -47,7 +47,7 @@ void addToBuffer(byte element, byte& index) {
 }
 
 void showBuffer() {
-    digitalWrite(latchPin, LOW);
+	digitalWrite(latchPin, LOW);
 
 	for (byte i = BRAILLE_CELLS; i > 0; i--)
 		shiftOut(dataPin, clockPin, MSBFIRST, buffer[i - 1]);
