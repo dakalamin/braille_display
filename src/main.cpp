@@ -6,13 +6,13 @@
 #include "translation.h"
 
 
-Button* proceedButton;
+CyclingButton* proceedButton;
 
 void setup() {
 	Serial.begin(BAUD_RATE);
 	Serial.println();
 
-	proceedButton = new Button(buttonPin);
+	proceedButton = new CyclingButton(buttonPin);
 
 	pinMode(latchPin, OUTPUT);
 	pinMode(dataPin,  OUTPUT);

@@ -25,7 +25,7 @@ nchar32_t readUTF8Char() {
 	else
 		return INVALID_NCHAR;  // anything else -> invalid
 
-	delay(MIN_DELAY_MS);  // Necessary between Serial.read() and Serial.available()
+	delay(MIN_DELAY_MS);  // Serial.available() needs a small delay between calls and after Serial.read()
 	if (Serial.available() < octetsToRead)
 		return INVALID_NCHAR;
 
