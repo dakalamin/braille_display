@@ -99,7 +99,6 @@ Press the button to display the next number of characters.
     </ul>
     </details>
     </blockquote>
-<br>
 
 - Program doesn't process characters in advance - it translates the least neccessary amount of characters to fill the Braille display after you press the button
 
