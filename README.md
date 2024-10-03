@@ -48,7 +48,7 @@ This project implements a scalable multi-cell Braille display system using an Ar
         </blockquote>
     - Press **'Upload'** button in the upper right corner of VSCode window *(or press `Ctrl+Alt+U`)*
 
-2. **On real Arduino via Arduino IDE**
+3. **On real Arduino via Arduino IDE**
     - Clone or [download](https://github.com/dakalamin/braille_display/archive/refs/heads/main.zip) and unpack the repository
     - Rename project's **`src`** folder to **`main`**
     - Rename **`main.cpp`** file to **`main.ino`**
@@ -64,9 +64,9 @@ This project implements a scalable multi-cell Braille display system using an Ar
 
 ## Usage
 
-Send messages, that you want to be translated and shown, to the Serial Monitor.
+Send messages, that you want to translate and show, to the Serial Monitor.
 
-Press the button to display the next number of characters.
+Press the button to display the next set of Braille patterns.
 
 ## Features
 
@@ -126,10 +126,10 @@ Press the button to display the next number of characters.
 - Add `SERIAL_ECHO` setting to configuration
 - Add tests
 - Add [PlatformIO CI](https://docs.platformio.org/en/latest/integration/ci/index.html)
-- Add autodetection of Braille cells
+- Add autodetection of Braille cells number
 - Optimize `nchar**_t` type for symbols with translation to Braille
 
-## Contributions
+## Contribution
 
 Feel free to contribute to this project by submitting issues or pull requests!
 
