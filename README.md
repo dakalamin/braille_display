@@ -109,8 +109,8 @@ Press the button to display the next number of characters.
     <details>
     <summary>Examples:</summary>
     first comes <b><code>30<ins>.</ins></code></b> message
-    <br><b>.</b> symbol doesn't have enough context in this message for now
-    <br>program shows <b><code>⠼⠉⠚</code></b> (without <b>.</b> symbol) and waits for the next message:
+    <br>there is not enough context in the message for the <b>.</b> symbol to be translated to Braille
+    <br>program sends <b><code>⠼⠉⠚</code></b> patterns to the display (without <b>.</b> symbol) and waits for the next message:
     <ul>
     <li>then comes <b><code>25</code></b> message → program shows <b><code><ins>⠨</ins>⠃⠑</code></b> <i>(decimal dot)</i></li>
     <b>-or-</b>
