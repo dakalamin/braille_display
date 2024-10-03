@@ -1,3 +1,5 @@
+# braille_display
+
 This project implements a scalable multi-cell Braille display system using an Arduino - it converts input characters into their corresponding Braille patterns, enabling accessibility for visually impaired users
 
 ![project breadboard scheme](assets/image.png)
@@ -117,7 +119,15 @@ Press the button to display the next number of characters.
     </details>
     </blockquote>
 
+## Todo
 
+- Add Customization section to README
+- Add Russian variant of README
+- Add `SERIAL_ECHO` setting to configuration
+- Add tests
+- Add [PlatformIO CI](https://docs.platformio.org/en/latest/integration/ci/index.html)
+- Add autodetection of Braille cells
+- Optimize `nchar**_t` type for symbols with translation to Braille
 
 ## Contributions
 
