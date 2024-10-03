@@ -37,7 +37,7 @@ This project implements a scalable multi-cell Braille display system using an Ar
         <b>Note:</b> <b>Arduino Uno</b> is set as default board in <b><code>platformio.ini</code></b> - if you use different board, do the following...
         </summary>
         <ul>
-        <li>Click <b>'View'→'Command Palette...'</b> <i>(or press <code>Ctrl+Shift+P</code>)</i></li>
+        <li>Click <b>'View'->'Command Palette...'</b> <i>(or press <code>Ctrl+Shift+P</code>)</i></li>
         <li>Paste <code>> PlatformIO: PlatformIO Home</code> and press <code>Enter</code></li>
         <li>Select <b>'Projects'</b> tab on the left</li>
         <li>Search for the <b>braille_display</b> project and click <b>'Configure'</b></li>
@@ -89,15 +89,15 @@ Press the button to display the next number of characters.
     <details>
     <summary>Examples:</summary>
     <ul>
-    <li>capital modifier is required before capital letters: <b>'XyZ'</b> → <b><u>⠠</u>⠭⠽<u>⠠</u>⠵</b></li>
-    <li>numeric modifier is required before numbers: <b>'a 12'</b> → <b>⠁ <u>⠼</u>⠁⠃</b></li>
+    <li>capital modifier is required before capital letters: <b><code>XyZ</code></b> → <b><code><ins>⠠</ins>⠭⠽<ins>⠠</ins>⠵</code></b></li>
+    <li>numeric modifier is required before numbers: <b><code>a 12</code></b> → <b><code>⠁ <ins>⠼</ins>⠁⠃</code></b></li>
     <li><b>.</b> (dot) symbol has different translations:<ul>
-    <li><b>'N.o'</b> → <b>⠠⠝<u>⠲</u>⠕</b> <i>(a grammatical dot)</i></li>
-    <li><b>'8.9'</b> → <b>⠼⠓<u>⠨</u>⠊</b> <i>(a decimal dot)</i></li>
+    <li><b><code>N.o</code></b> → <b><code>⠠⠝<ins>⠲</ins>⠕</code></b> <i>(a grammatical dot)</i></li>
+    <li><b><code>8.9</code></b> → <b><code>⠼⠓<ins>⠨</ins>⠊</code></b> <i>(a decimal dot)</i></li>
     </ul></li>
-    <li><b>*</b> (asterisk) symbol is translated into a doubled <b>⠔</b> Braille pattern: <b>'5 * 6'</b>→ <b>⠼⠑ <u>⠔⠔</u> ⠼⠋</b></li>
-    <li><b>"</b> (quote) symbol's Braille pattern alternates on opens and closes: <b>'m "q" n'</b> → <b>⠍ <u>⠦</u>⠟<u>⠴</u> ⠝</b></li>
-    <li>quote, unpaired until EOM, can be paired automatically: <b>'"k'</b> → <b>⠦⠅<u>⠴</u></b></li>
+    <li><b>*</b> (asterisk) symbol is translated into a doubled <b>⠔</b> Braille pattern: <b><code>5 * 6</code></b>→ <b><code>⠼⠑ <ins>⠔⠔</ins> ⠼⠋</code></b></li>
+    <li><b>"</b> (quote) symbol's Braille pattern alternates on opens and closes: <b><code>m "q" n</code></b> → <b><code>⠍ <ins>⠦</ins>⠟<ins>⠴</ins> ⠝</code></b></li>
+    <li>quote, unpaired until EOM, can be paired automatically: <b><code>"k</code></b> → <b><code>⠦⠅<ins>⠴</ins></code></b></li>
     </ul>
     </details>
     </blockquote>
@@ -108,13 +108,13 @@ Press the button to display the next number of characters.
     <blockquote>
     <details>
     <summary>Examples:</summary>
-    first comes <b>'30<u>.</u>'</b> message
+    first comes <b><code>30<ins>.</ins></code></b> message
     <br><b>.</b> symbol doesn't have enough context in this message for now
-    <br>program shows <b>⠼⠉⠚</b> (without <b>.</b> symbol) and waits for the next message:
+    <br>program shows <b><code>⠼⠉⠚</code></b> (without <b>.</b> symbol) and waits for the next message:
     <ul>
-    <li>then comes <b>'25'</b> message → program shows <b><u>⠨</u>⠃⠑</b> <i>(decimal dot)</i></li>
+    <li>then comes <b><code>25</code></b> message → program shows <b><code><ins>⠨</ins>⠃⠑</code></b> <i>(decimal dot)</i></li>
     <b>-or-</b>
-    <li>then comes <b>' re'</b> message → program shows <b><u>⠲</u>⠗⠑</b> <i>(grammatical dot)</i></li>
+    <li>then comes <b><code> re</code></b> message → program shows <b><code><ins>⠲</ins>⠗⠑</code></b> <i>(grammatical dot)</i></li>
     </ul>
     </details>
     </blockquote>
