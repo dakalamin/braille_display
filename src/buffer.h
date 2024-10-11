@@ -57,18 +57,18 @@ public:
 		clear(indexFrom, size);
 	}
 
-	void add(byte element);
+	void add(byte element);  // defined in translation.h
 	void add(byte element, byte& index) {
 		_contents[index++] = element;
 	}
 
 	void show() {
-		digitalWrite(latchPin, LOW);
+		digitalWrite(LATCH_PIN, LOW);
 
 		for (byte i = brailleCells; i > 0; i--)
-			shiftOut(dataPin, clockPin, MSBFIRST, _contents[i - 1]);
+			shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, _contents[i - 1]);
 
-		digitalWrite(latchPin, HIGH);
+		digitalWrite(LATCH_PIN, HIGH);
 	}
 
 private:

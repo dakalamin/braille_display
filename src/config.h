@@ -21,11 +21,11 @@ typedef uint32_t nchar32_t;
 typedef uint8_t braille_t;
 
 
-#define autoPin   7
-#define buttonPin 8
-#define dataPin   11  //    DS pin of 74HC595 shift register
-#define latchPin  12  // ST_CP pin of 74HC595 shift register
-#define clockPin  13  // SH_CP pin of 74HC595 shift register
+#define AUTO_PIN   7
+#define BUTTON_PIN 8
+#define DATA_PIN   11  //    DS pin of 74HC595 shift register
+#define LATCH_PIN  12  // ST_CP pin of 74HC595 shift register
+#define CLOCK_PIN  13  // SH_CP pin of 74HC595 shift register
 
 
 #ifndef PLATFORMIO

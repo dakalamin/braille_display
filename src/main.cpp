@@ -23,15 +23,15 @@ void setup() {
 	Serial.begin(BAUD_RATE);
 	Serial.println();
 
-	pinMode(autoPin,  INPUT);
-	pinMode(latchPin, OUTPUT);
-	pinMode(dataPin,  OUTPUT);
-	pinMode(clockPin, OUTPUT);
+	pinMode(AUTO_PIN,  INPUT);
+	pinMode(LATCH_PIN, OUTPUT);
+	pinMode(DATA_PIN,  OUTPUT);
+	pinMode(CLOCK_PIN, OUTPUT);
 
 	countBrailleCells();
 	buffer.initialize();
 	
-	proceedButton = new CyclingButton(buttonPin);
+	proceedButton = new CyclingButton(BUTTON_PIN);
 }
 
 void loop() {

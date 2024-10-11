@@ -5,11 +5,11 @@
     If you use PlatformIO, consider configuring it in `platformio.ini` first
 */
 
-// #define autoPin
-// #define buttonPin
-// #define dataPin
-// #define latchPin
-// #define clockPin
+// #define AUTO_PIN
+// #define BUTTON_PIN
+// #define DATA_PIN
+// #define LATCH_PIN
+// #define CLOCK_PIN
 
 // #define BAUD_RATE
 
