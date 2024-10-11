@@ -14,6 +14,7 @@
 #include "button.h"
 #include "config.h"
 #include "translation.h"
+#include "utils.h"
 
 
 CyclingButton* proceedButton;
@@ -22,16 +23,18 @@ void setup() {
 	Serial.begin(BAUD_RATE);
 	Serial.println();
 
-	proceedButton = new CyclingButton(buttonPin);
-
+	pinMode(autoPin,  INPUT);
 	pinMode(latchPin, OUTPUT);
 	pinMode(dataPin,  OUTPUT);
 	pinMode(clockPin, OUTPUT);
 
-	clearBuffer();
+	countBrailleCells();
+	buffer.initialize();
+	
+	proceedButton = new CyclingButton(buttonPin);
 }
 
 void loop() {
-	if (proceedButton->clicked() && prepareToShow())
-		showBuffer();
+	if (proceedButton->clicked() && readyToShow())
+		buffer.show();
 }

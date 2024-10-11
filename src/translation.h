@@ -23,8 +23,8 @@ byte messageAttributes = NEW_MESSAGE;
 byte firstEmptyIndex = 0;
 
 
-void addToBuffer(byte element) {
-	addToBuffer(element, firstEmptyIndex);
+void Buffer::add(byte element) {
+	add(element, firstEmptyIndex);
 }
 
 
@@ -94,7 +94,7 @@ void eomRoutine(bool eomCondition=true) {
 		return;
 
 	if (messageAttributes & QUOTATION_PARITY)
-		addToBuffer(ncharToBraille('"'));
+		buffer.add(ncharToBraille('"'));
 
 	messageAttributes = NEW_MESSAGE;
 }
@@ -121,7 +121,7 @@ bool processDotSpecialCase() {
 	if (~nextNcharAttributes & IS_NUMERIC)
 		return false;
 
-	addToBuffer(DECIMAL_POINT);
+	buffer.add(DECIMAL_POINT);
 	return true;
 }
 
@@ -145,9 +145,9 @@ bool readAndProcess() {
 	if (ncharAttributes & IS_NUMERIC) {
 		if (~messageAttributes & NUMERIC_MOD_ACTIVE) {
 			messageAttributes |= NUMERIC_MOD_ACTIVE;
-			addToBuffer(NUMERIC_MOD);
+			buffer.add(NUMERIC_MOD);
 		}
-		addToBuffer(braille);
+		buffer.add(braille);
 		return true;
 	}
 	messageAttributes &= ~NUMERIC_MOD_ACTIVE;
@@ -159,25 +159,25 @@ bool readAndProcess() {
 		messageAttributes ^= QUOTATION_PARITY;
 	}
 	else if (nchar == '*')
-		addToBuffer(braille);
+		buffer.add(braille);
 	else if (ncharAttributes & IS_UPPER_CASE)
-		addToBuffer(CAPITAL_MOD);
+		buffer.add(CAPITAL_MOD);
 
-	addToBuffer(braille);
+	buffer.add(braille);
 	return true;
 }
 
 
-bool prepareToShow() {
+bool readyToShow() {
 	bool messageInputRemains = true;
-	firstEmptyIndex = shiftBufferLeft();
+	firstEmptyIndex = buffer.shiftLeft();
 
-	while (firstEmptyIndex < BRAILLE_CELLS && messageInputRemains)
+	while (firstEmptyIndex < brailleCells && messageInputRemains)
 		messageInputRemains = readAndProcess();
 
 	if (firstEmptyIndex == 0)
 		return false;
 
-	clearBuffer(firstEmptyIndex, BUFFER_SIZE);
+	buffer.clear(firstEmptyIndex);
     return true;
 }

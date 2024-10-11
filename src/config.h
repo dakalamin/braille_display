@@ -21,10 +21,17 @@ typedef uint32_t nchar32_t;
 typedef uint8_t braille_t;
 
 
+#define autoPin   7
 #define buttonPin 8
 #define dataPin   11  //    DS pin of 74HC595 shift register
 #define latchPin  12  // ST_CP pin of 74HC595 shift register
 #define clockPin  13  // SH_CP pin of 74HC595 shift register
+
+
+#ifndef PLATFORMIO
+	#include "custom_config.h"
+#endif
+
 
 #ifndef BAUD_RATE
 	#define BAUD_RATE 9600
@@ -32,25 +39,55 @@ typedef uint8_t braille_t;
 
 #define MIN_DELAY_MS 2
 
+#ifndef BUTTON_CLICK_MS
+	#define BUTTON_CLICK_MS 100
+#endif
+#ifndef BUTTON_CYCLE_MS
+	#define BUTTON_CYCLE_MS 1000
+#endif
 
-const byte BRAILLE_CELLS = 4;
+
+#define AUTOCOUNT_BIT (1 << 7)
+#ifndef AUTOCOUNT_CELLS
+	#define AUTOCOUNT_CELLS true
+#endif
+#ifndef BRAILLE_CELLS
+	#define BRAILLE_CELLS 4
+#endif
+
+#ifndef ANIMATION_ON_START
+	#define ANIMATION_ON_START true
+#endif
+#ifndef ANIMATION_MS_PER_CELL
+	#define ANIMATION_MS_PER_CELL 500
+#endif
+
+#ifndef SERIAL_ECHO
+	#define SERIAL_ECHO true
+#endif
+
+#ifndef LF_IS_EOM
+	/*
+		LF is End Of Message
+		If 0, concatinates messages before and after LF symbol
+
+		e.g.: message is "x1[LF]0"
+		if 0 ⟶ "x10" ⟶ ⠭⠼⠁⠚   
+		if 1 ⟶ "x1"|"0" ⟶ ⠭⠼⠁|⠼⠚ 
+	*/
+	#define LF_IS_EOM true
+#endif
+#ifndef SERIAL_NA_IS_EOM
+	/*
+		Serial Not Available is End Of Message
+		If 0, concatinates messages before and after Serial not available
+
+		e.g.: message is "x1[Serial NA]0"
+		if 0 ⟶ "x10" ⟶ ⠭⠼⠁⠚   
+		if 1 ⟶ "x1"|"0" ⟶ ⠭⠼⠁|⠼⠚ 
+	*/
+	#define SERIAL_NA_IS_EOM false
+#endif
 
 
-/*
-	LF is End Of Message
-	If 0, concatinates messages before and after LF symbol
-
-	e.g.: message is "x1[LF]0"
-	if 0 ⟶ "x10" ⟶ ⠭⠼⠁⠚   
-	if 1 ⟶ "x1"|"0" ⟶ ⠭⠼⠁|⠼⠚ 
-*/
-#define LF_IS_EOM 0
-/*
-	Serial Not Available is End Of Message
-	If 0, concatinates messages before and after Serial not available
-
-	e.g.: message is "x1[Serial NA]0"
-	if 0 ⟶ "x10" ⟶ ⠭⠼⠁⠚   
-	if 1 ⟶ "x1"|"0" ⟶ ⠭⠼⠁|⠼⠚ 
-*/
-#define SERIAL_NA_IS_EOM 0
+byte brailleCells;

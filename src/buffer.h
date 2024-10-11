@@ -4,53 +4,78 @@
 #include "patterns.h"
 
 
-const byte BUFFER_SIZE = BRAILLE_CELLS + 1;
-byte buffer[BUFFER_SIZE];
+class Buffer {
+public:
+	static Buffer& getInstance() {
+		static Buffer INSTANCE;
+		return INSTANCE;
+	}
 
-/*
+private:
+	Buffer() { }
+
+public:
+	void initialize() {
+		Buffer::size = brailleCells + 1;
+		_contents = new byte[size];
+
+		clear();
+	}
+
+	/*
 	Shift buffer left and return index of the first empty element after the shift
 	
 	After elements are sent to display, first BRAILLE_CELLS elements are cleared,
 	but some non-empty elements may remain in the buffer
 
-	e.g.: let BRAILLE_CELLS = 4 and BUFFER_SIZE = 7
+	e.g.: let brailleCells = 4 and Buffer::size = 7
 	-----------------------------  0   1   2   3   4   5   6  
 	initial state: ------------- | A | B | C | D | E | F | . |
 	after showBuffer(): -------- | . | . | . | . | E | F | . | ( ABCD on display )
 	after shiftBufferLeft(): --- | E | F |[.]| . | . | . | . |
 
 	[.] is the first empty element, its index is returned -> 2
-*/
-byte shiftBufferLeft() {
-	byte to = 0;
-	for (byte from = BRAILLE_CELLS; from < BUFFER_SIZE; from++, to++) {
-		byte element = buffer[from];
-		if (element == EMPTY)
-			break;
+	*/
+	byte shiftLeft() {
+		byte to = 0;
+		for (byte from = brailleCells; from < size; from++, to++) {
+			byte element = _contents[from];
+			if (element == EMPTY)
+				break;
 
-		buffer[to]   = element;
-		buffer[from] = EMPTY;
+			_contents[to]   = element;
+			_contents[from] = EMPTY;
+		}
+		return to;
 	}
-	return to;
-}
 
-void clearBuffer(byte indexFrom, byte indexTo) {
-	for (byte i = indexFrom; i < indexTo; i++)
-		buffer[i] = EMPTY;
-}
-void clearBuffer(byte indexTo=BUFFER_SIZE) {
-	clearBuffer(0, indexTo);
-}
+	void clear(byte indexFrom, byte indexTo) {
+		for (byte i = indexFrom; i < indexTo; i++)
+			_contents[i] = EMPTY;
+	}
+	void clear(byte indexFrom=0) {
+		clear(indexFrom, size);
+	}
 
-void addToBuffer(byte element, byte& index) {
-	buffer[index++] = element;
-}
+	void add(byte element);
+	void add(byte element, byte& index) {
+		_contents[index++] = element;
+	}
 
-void showBuffer() {
-	digitalWrite(latchPin, LOW);
+	void show() {
+		digitalWrite(latchPin, LOW);
 
-	for (byte i = BRAILLE_CELLS; i > 0; i--)
-		shiftOut(dataPin, clockPin, MSBFIRST, buffer[i - 1]);
+		for (byte i = brailleCells; i > 0; i--)
+			shiftOut(dataPin, clockPin, MSBFIRST, _contents[i - 1]);
 
-	digitalWrite(latchPin, HIGH);
-}
+		digitalWrite(latchPin, HIGH);
+	}
+
+private:
+	byte* _contents;
+public:
+	static byte size;
+};
+
+byte Buffer::size;
+Buffer& buffer = Buffer::getInstance();

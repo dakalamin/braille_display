@@ -1,10 +1,8 @@
 #pragma once
 
 #include <Arduino.h>
+#include "config.h"
 
-
-#define BUTTON_CLICK_MS 100
-#define BUTTON_CYCLE_MS 1000
 
 class Button {
 protected:
@@ -38,14 +36,14 @@ public:
 		return false;
 	}
 
+private:
+	byte     _pin;
+	bool     _flag = false;
+	uint32_t _timerMS = 0;
 public:
 	const bool isCycling;
 	uint16_t clickMS = BUTTON_CLICK_MS;
 	uint16_t cycleMS = BUTTON_CYCLE_MS;
-private:
-	byte     _pin;
-	bool     _flag  = false;
-	uint32_t _timerMS = 0;
 };
 
 class CyclingButton : public Button {

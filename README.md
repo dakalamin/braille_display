@@ -126,7 +126,6 @@ Press the button to display the next set of Braille patterns.
 - Add `SERIAL_ECHO` setting to configuration
 - Add tests
 - Add [PlatformIO CI](https://docs.platformio.org/en/latest/integration/ci/index.html)
-- Add autodetection of Braille cells number
 - Optimize `nchar**_t` type for symbols with translation to Braille
 
 ## Contribution
