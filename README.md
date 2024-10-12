@@ -123,7 +123,6 @@ Press the button to display the next set of Braille patterns.
 
 - Add Customization section to README
 - Add Russian variant of README
-- Add `SERIAL_ECHO` setting to configuration
 - Add tests
 - Add [PlatformIO CI](https://docs.platformio.org/en/latest/integration/ci/index.html)
 - Optimize `nchar**_t` type for symbols with translation to Braille
