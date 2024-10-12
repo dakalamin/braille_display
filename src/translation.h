@@ -14,8 +14,8 @@ enum NcharAttribute : byte {
 };
 
 enum MessageAttribute : byte {
-	NEW_MESSAGE       = 0,
-	QUOTATION_PARITY  = 1 << 0,
+	NEW_MESSAGE        = 0,
+	QUOTATION_PARITY   = 1 << 0,
 	NUMERIC_MOD_ACTIVE = 1 << 1,
 };
 byte messageAttributes = NEW_MESSAGE;
@@ -121,7 +121,7 @@ bool processDotSpecialCase() {
 	if (~nextNcharAttributes & IS_NUMERIC)
 		return false;
 
-	buffer.add(DECIMAL_POINT);
+	buffer.addAndEcho(DECIMAL_POINT, NCHAR_DOT);
 	return true;
 }
 
@@ -147,7 +147,7 @@ bool readAndProcess() {
 			messageAttributes |= NUMERIC_MOD_ACTIVE;
 			buffer.add(NUMERIC_MOD);
 		}
-		buffer.add(braille);
+		buffer.addAndEcho(braille, nchar);
 		return true;
 	}
 	messageAttributes &= ~NUMERIC_MOD_ACTIVE;
@@ -163,7 +163,7 @@ bool readAndProcess() {
 	else if (ncharAttributes & IS_UPPER_CASE)
 		buffer.add(CAPITAL_MOD);
 
-	buffer.add(braille);
+	buffer.addAndEcho(braille, nchar);
 	return true;
 }
 
@@ -177,6 +177,10 @@ bool readyToShow() {
 
 	if (firstEmptyIndex == 0)
 		return false;
+
+	#if SERIAL_ECHO
+		Serial.println();
+	#endif
 
 	buffer.clear(firstEmptyIndex);
     return true;

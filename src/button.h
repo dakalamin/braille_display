@@ -38,7 +38,7 @@ public:
 
 private:
 	byte     _pin;
-	bool     _flag = false;
+	bool     _flag    = false;
 	uint32_t _timerMS = 0;
 public:
 	const bool isCycling;

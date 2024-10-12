@@ -49,17 +49,31 @@ public:
 		return to;
 	}
 
-	void clear(byte indexFrom, byte indexTo) {
+	void clear(byte indexFrom=0, byte indexTo=size) {
 		for (byte i = indexFrom; i < indexTo; i++)
 			_contents[i] = EMPTY;
 	}
-	void clear(byte indexFrom=0) {
-		clear(indexFrom, size);
-	}
 
-	void add(byte element);  // defined in translation.h
+	void add(byte element); // defined in translation.h
 	void add(byte element, byte& index) {
 		_contents[index++] = element;
+	}
+
+	void addAndEcho(byte element, nchar32_t nchar) {
+		add(element);
+
+		#if SERIAL_ECHO
+			byte ncharBytes;
+			for (ncharBytes = 4; (ncharBytes > 1) && !(nchar & 0xFF000000); ncharBytes--, nchar <<= 8) { }
+
+			char* output = new char[ncharBytes];
+
+			for (byte i = 0; i < ncharBytes; i++, nchar <<= 8)
+				output[i] = (nchar > 0) ? nchar >> 24 : 0;
+				
+			Serial.print(output);
+			delete [] output;
+		#endif
 	}
 
 	void show() {
