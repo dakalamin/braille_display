@@ -20,6 +20,17 @@ enum MessageAttribute : byte {
 };
 byte messageAttributes = NEW_MESSAGE;
 
+const byte RUS_ALPHABET_LEN = 32;  // without 'Ё'
+enum RussianChar16 : uint16_t {
+	RUS_UPPER_FIRST = 0xD090,  // А
+	RUS_UPPER_LAST  = 0xD0AF,  // Я
+	RUS_UPPER_YO    = 0xD081,  // Ё
+
+	RUS_LOWER_FIRST = RUS_ALPHABET_LEN + RUS_UPPER_FIRST,  // а
+	RUS_LOWER_LAST  = RUS_ALPHABET_LEN + RUS_UPPER_LAST,   // я
+	RUS_LOWER_YO    = RUS_ALPHABET_LEN + RUS_UPPER_YO,     // ё
+};
+
 byte firstEmptyIndex = 0;
 
 
@@ -34,52 +45,52 @@ byte ncharToBraille(nchar32_t nchar, byte& attribute) {
 	byte index;
 	const braille_t* array;
 
-	if (nchar < PUNCT1_CHAR)  // ----------------------------------- BEFORE PUNCTUATION
+	if (nchar < PUNCT1_CHAR)  // -------------------------------------- BEFORE PUNCTUATION
 		return NA;
-	else if (nchar < '0') {  // ------------------------------------ PUNCTUATION FROM ' ' to '/'
-		index = nchar - PUNCT1_CHAR;                              // (ASCII FROM 32 TO 47)
+	else if (nchar < '0') {  // --------------------------------------- PUNCTUATION FROM ' ' to '/'
+		index = nchar - PUNCT1_CHAR;                                 // (ASCII FROM 32 TO 47)
 		array = PUNCT1_TO_BRAILLE;
 	}
-	else if (nchar < PUNCT2_CHAR) {  // ---------------------------- NUMERIC
+	else if (nchar < PUNCT2_CHAR) {  // ------------------------------- NUMERIC
 		attribute = IS_NUMERIC;
 		index = (nchar == '0') ? 9 : (nchar - 1 - '0');
 		array = ENG_NUMERIC_TO_BRAILLE;
 	}
-	else if (nchar < 'A') {  // ------------------------------------ PUNCTUATION FROM ':' to '@'
-		index = nchar - PUNCT2_CHAR;                              // (ASCII FROM 58 TO 64)
+	else if (nchar < 'A') {  // --------------------------------------- PUNCTUATION FROM ':' to '@'
+		index = nchar - PUNCT2_CHAR;                                 // (ASCII FROM 58 TO 64)
 		array = PUNCT2_TO_BRAILLE;
 	}
-	else if (nchar <= 'Z') {  // ----------------------------------- ENGLISH UPPER CASE
+	else if (nchar <= 'Z') {  // -------------------------------------- ENGLISH UPPER CASE
 		attribute = IS_UPPER_CASE;
 		index = nchar - 'A';
 		array = ENG_NUMERIC_TO_BRAILLE;
 	}
-	else if ('a' <= nchar && nchar <= 'z') {  // ------------------- ENGLISH LOWER CASE
+	else if ('a' <= nchar && nchar <= 'z') {  // ---------------------- ENGLISH LOWER CASE
 		index = nchar - 'a';
 		array = ENG_NUMERIC_TO_BRAILLE;
 	}
-	else if ((uint16_t)'А' <= nchar && nchar <= (uint16_t)'Я') {  // RUSSIAN UPPER CASE
+	else if (RUS_UPPER_FIRST <= nchar && nchar <= RUS_UPPER_LAST) {  // RUSSIAN UPPER CASE
 		attribute = IS_RUSSIAN | IS_UPPER_CASE;
-		index = nchar - (uint16_t)'А';
+		index = nchar - RUS_UPPER_FIRST;
 		array = RUSSIAN_TO_BRAILLE;
 	}
-	else if ((uint16_t)'а' <= nchar && nchar <= (uint16_t)'я') {  // RUSSIAN LOWER CASE
+	else if (RUS_LOWER_FIRST <= nchar && nchar <= RUS_LOWER_LAST) {  // RUSSIAN LOWER CASE
 		attribute = IS_RUSSIAN;
-		index = nchar - (uint16_t)'а';
+		index = nchar - RUS_LOWER_FIRST;
 		array = RUSSIAN_TO_BRAILLE;
 	}
-	else if (nchar == (uint16_t)'Ё') {  // ------------------------- RUSSIAN Ё
+	else if (nchar == RUS_UPPER_YO) {  // ----------------------------- RUSSIAN Ё
 		attribute = IS_RUSSIAN | IS_UPPER_CASE;
-		index = 32;
+		index = RUS_ALPHABET_LEN;
 		array = RUSSIAN_TO_BRAILLE;
 	}
-	else if (nchar == (uint16_t)'ё') {  // ------------------------- RUSSIAN ё
+	else if (nchar == RUS_LOWER_YO) {  // ----------------------------- RUSSIAN ё
 		attribute = IS_RUSSIAN;
-		index = 32;
+		index = RUS_ALPHABET_LEN;
 		array = RUSSIAN_TO_BRAILLE;
 	}
 	else
-		return NA;  // --------------------------------------------- ANYTHING ELSE
+		return NA;  // ------------------------------------------------ ANYTHING ELSE
 
 	return pgm_read_byte(&array[index]);
 }
