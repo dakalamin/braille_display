@@ -23,18 +23,18 @@ public:
 	}
 
 	/*
-	Shift buffer left and return index of the first empty element after the shift
-	
-	After elements are sent to display, first BRAILLE_CELLS elements are cleared,
-	but some non-empty elements may remain in the buffer
+		Shift buffer left and return index of the first empty element after the shift
+		
+		After elements are sent to display, first BRAILLE_CELLS elements are cleared,
+		but some non-empty elements may remain in the buffer
 
-	e.g.: let brailleCells = 4 and Buffer::size = 7
-	-----------------------------  0   1   2   3   4   5   6  
-	initial state: ------------- | A | B | C | D | E | F | . |
-	after showBuffer(): -------- | . | . | . | . | E | F | . | ( ABCD on display )
-	after shiftBufferLeft(): --- | E | F |[.]| . | . | . | . |
+		e.g.: let brailleCells = 4 and Buffer::size = 7
+		-----------------------------  0   1   2   3   4   5   6  
+		initial state: ------------- | A | B | C | D | E | F | . |
+		after showBuffer(): -------- | . | . | . | . | E | F | . | ( ABCD on display )
+		after shiftBufferLeft(): --- | E | F |[.]| . | . | . | . |
 
-	[.] is the first empty element, its index is returned -> 2
+		[.] is the first empty element, its index is returned -> 2
 	*/
 	byte shiftLeft() {
 		byte to = 0;
@@ -54,7 +54,7 @@ public:
 			_contents[i] = EMPTY;
 	}
 
-	void add(byte element); // defined in translation.h
+	void add(byte element);  // defined in translation.h
 	void add(byte element, byte& index) {
 		_contents[index++] = element;
 	}
