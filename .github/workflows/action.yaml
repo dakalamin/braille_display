@@ -1,3 +1,5 @@
+# https://docs.platformio.org/en/latest/integration/ci/github-actions.html#using-cmd-run-command
+
 name: PlatformIO CI
 
 on: [push]
