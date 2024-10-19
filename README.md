@@ -1,5 +1,11 @@
 # braille_display
 
+[![GitHub Actions Workflow Status - build.yaml](https://img.shields.io/github/actions/workflow/status/dakalamin/braille_display/build.yaml?style=flat-square&label=PlatformIO%20build)](https://github.com/dakalamin/braille_display/actions/workflows/build.yaml)
+[![GitHub Actions Workflow Status - readme.yaml](https://img.shields.io/github/actions/workflow/status/dakalamin/braille_display/readme.yaml?style=flat-square&label=Readme%20links%20check)](https://github.com/dakalamin/braille_display/actions/workflows/readme.yaml)
+
+[![GitHub Release](https://img.shields.io/github/v/release/dakalamin/braille_display?sort=semver&display_name=tag&style=flat-square&label=Release)](https://github.com/dakalamin/braille_display/releases)
+[![GitHub License](https://img.shields.io/github/license/dakalamin/braille_display?style=flat-square&label=License)](#license)
+
 This project implements a scalable multi-cell Braille display system using an Arduino - it converts input characters into their corresponding Braille patterns, enabling accessibility for visually impaired users
 
 ![project breadboard scheme](assets/image.png)
