@@ -1,6 +1,11 @@
-name: PlatformIO CI
+name: Build project with PlatformIO
 
-on: [push]
+on:
+  push:
+    paths:
+      - '.github/workflows/build.yaml'
+      - 'src/**'
+      - 'platformio.ini'
 
 jobs:
   build:
@@ -20,6 +25,5 @@ jobs:
           check-latest: true
       - name: Install PlatformIO Core
         run: pip install --upgrade platformio
-
-      - name: Build PlatformIO Project
+      - name: Build project
         run: pio run

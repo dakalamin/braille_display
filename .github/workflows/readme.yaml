@@ -1,0 +1,18 @@
+name: Check links in README
+
+on:
+  push:
+    paths:
+      - '.github/workflows/readme.yaml'
+      - 'README.md'
+  schedule:
+  # run twice a month (on 1st and 15th of every month at 12:00 UTC)
+    - cron: '0 12 1,15 * *'
+
+jobs:
+  linkinator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Linkinator
+        uses: JustinBeckwith/linkinator-action@v1
