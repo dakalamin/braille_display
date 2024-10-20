@@ -1,7 +1,7 @@
 # braille_display
 
 [![GitHub Actions Workflow Status - build.yaml](https://img.shields.io/github/actions/workflow/status/dakalamin/braille_display/build.yaml?style=flat-square&label=PlatformIO%20build)](https://github.com/dakalamin/braille_display/actions/workflows/build.yaml)
-[![GitHub Actions Workflow Status - readme.yaml](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/dakalamin/a03fafd87cde1d5878f7955cac843017/raw/braille_displa_readme_badge.json)](https://github.com/dakalamin/braille_display/actions/workflows/readme.yaml)
+[![GitHub Actions Workflow Status - readme.yaml](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/dakalamin/a03fafd87cde1d5878f7955cac843017/raw/braille_display_readme_badge.json)](https://github.com/dakalamin/braille_display/actions/workflows/readme.yaml)
 
 [![GitHub Release](https://img.shields.io/github/v/release/dakalamin/braille_display?sort=semver&display_name=tag&style=flat-square&label=Release)](https://github.com/dakalamin/braille_display/releases)
 [![GitHub License](https://img.shields.io/github/license/dakalamin/braille_display?style=flat-square&label=License)](#license)
