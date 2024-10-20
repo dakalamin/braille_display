@@ -30,7 +30,7 @@ jobs:
         if: ${{ needs.linkinator.result == 'success' }}
         run: |
           echo "MESSAGE=passing - $(date --utc '+%b %d %Y at %R UTC')" >> $GITHUB_ENV
-          echo "COLOR=green" >> $GITHUB_ENV
+          echo "COLOR='#44cc11'" >> $GITHUB_ENV
       - name: Create badge
         uses: schneegans/dynamic-badges-action@v1.7.0
         with:
