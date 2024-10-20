@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "author": "Anonymous maker",
+  "author": "dakalamin",
   "editor": "wokwi",
   "parts": [
     { "type": "wokwi-breadboard",  "id": "bb1",   "top": 35.4,  "left": 444.4,                "attrs": {} },
