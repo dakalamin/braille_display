@@ -1,5 +1,6 @@
 #pragma once
 
+#include "nchar.h"
 #include "config.h"
 #include "patterns.h"
 
@@ -63,16 +64,7 @@ public:
 		add(element);
 
 		#if SERIAL_ECHO
-			byte ncharBytes;
-			for (ncharBytes = 4; (ncharBytes > 1) && !(nchar & 0xFF000000); ncharBytes--, nchar <<= 8) { }
-
-			char* output = new char[ncharBytes];
-
-			for (byte i = 0; i < ncharBytes; i++, nchar <<= 8)
-				output[i] = (nchar > 0) ? nchar >> 24 : 0;
-				
-			Serial.print(output);
-			delete [] output;
+			printNchar(nchar);
 		#endif
 	}
 

@@ -6,13 +6,6 @@
 #include "nchar.h"
 
 
-enum NcharAttribute : byte {
-	COMMON        = 1 << 0,
-	IS_RUSSIAN    = 1 << 1,
-	IS_UPPER_CASE = 1 << 2,
-	IS_NUMERIC    = 1 << 3,
-};
-
 enum MessageAttribute : byte {
 	NEW_MESSAGE        = 0,
 	QUOTATION_PARITY   = 1 << 0,
@@ -26,9 +19,9 @@ enum RussianChar16 : uint16_t {
 	RUS_UPPER_LAST  = 0xD0AF,  // Я
 	RUS_UPPER_YO    = 0xD081,  // Ё
 
-	RUS_LOWER_FIRST = RUS_ALPHABET_LEN + RUS_UPPER_FIRST,  // а
-	RUS_LOWER_LAST  = RUS_ALPHABET_LEN + RUS_UPPER_LAST,   // я
-	RUS_LOWER_YO    = RUS_ALPHABET_LEN + RUS_UPPER_YO,     // ё
+	RUS_LOWER_FIRST = 0xD0B0,  // а
+	RUS_LOWER_LAST  = 0xD18F,  // я
+	RUS_LOWER_YO    = 0xD191,  // ё
 };
 
 byte firstEmptyIndex = 0;
@@ -77,6 +70,15 @@ byte ncharToBraille(nchar32_t nchar, byte& attribute) {
 	else if (RUS_LOWER_FIRST <= nchar && nchar <= RUS_LOWER_LAST) {  // RUSSIAN LOWER CASE
 		attribute = IS_RUSSIAN;
 		index = nchar - RUS_LOWER_FIRST;
+		// from 'р' to 'я' values are shifted by +192
+		// ...
+		// 'о' = [110]10000 [10]111110 -> 'о' - 'а' = 14
+		// 'п' = [110]10000 [10]111111 -> 'п' - 'а' = 15
+		// 'р' = [110]10001 [10]000000 -> 'р' - 'а' = 208 -> 208 - 192 = 16
+		// 'с' = [110]10001 [10]000001 -> 'с' - 'а' = 209 -> 208 - 192 = 17
+		// ...
+		if (index > RUS_ALPHABET_LEN)
+			index -= 192;
 		array = RUSSIAN_TO_BRAILLE;
 	}
 	else if (nchar == RUS_UPPER_YO) {  // ----------------------------- RUSSIAN Ё

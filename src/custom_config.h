@@ -2,7 +2,13 @@
 
 /*
     Configure the project HERE
-    If you use PlatformIO, consider configuring it in `platformio.ini` first
+    If you use PlatformIO, you can also use 
+	`build_flags` section of `platformio.ini` file
+
+	Configurations priority:
+	3. `platformio.ini`      - only if you use PlatformIO
+	2. `src/config.h`        - not supposed to be edited
+	1. `src/custom_config.h` - this file
 */
 
 // #define AUTO_PIN    // uint
