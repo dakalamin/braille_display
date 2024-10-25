@@ -3,7 +3,7 @@
 [![GitHub Actions Workflow Status - build.yaml](https://img.shields.io/github/actions/workflow/status/dakalamin/braille_display/build.yaml?style=flat-square&label=PlatformIO%20build)](https://github.com/dakalamin/braille_display/actions/workflows/build.yaml)
 [![GitHub Actions Workflow Status - readme.yaml](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/dakalamin/a03fafd87cde1d5878f7955cac843017/raw/braille_display_readme_badge.json)](https://github.com/dakalamin/braille_display/actions/workflows/readme.yaml)
 
-[![GitHub Release](https://img.shields.io/github/v/release/dakalamin/braille_display?sort=semver&display_name=tag&style=flat-square&label=Release)](https://github.com/dakalamin/braille_display/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/dakalamin/braille_display?sort=semver&display_name=tag&style=flat-square&label=Latest%20release)](https://github.com/dakalamin/braille_display/releases)
 [![GitHub License](https://img.shields.io/github/license/dakalamin/braille_display?style=flat-square&label=License)](#license)
 
 This project implements a scalable multi-cell Braille display system using an Arduino - it converts input characters into their corresponding Braille patterns, enabling accessibility for visually impaired users
@@ -54,14 +54,19 @@ This project implements a scalable multi-cell Braille display system using an Ar
 
 ### **3. On real Arduino via Arduino IDE**
 - Clone or [download](https://github.com/dakalamin/braille_display/archive/refs/heads/main.zip) and unpack the repository
-- Rename project's **`src`** folder to **`main`**
-- Rename **`main.cpp`** file to **`main.ino`**
+- Use an appropriate script from the project's **`scripts/`** folder:
+	- **`toggle.batch`** for Windows
+	- **`toggle.bash`**  for Linux
+> [!Note]
+> An alternative way is to do it manually:
+> - Rename project's **`src`** folder to **`main`**
+> - Rename **`main.cpp`** file to **`main.ino`**
 - Open **`main.ino`** with Arduino IDE
-> [!Note]
-> Make sure that all **`.h`** files are shown in the top tabs
 - Connect your Arduino via USB to your computer
-> [!Note]
-> Make sure to select your Arduino model in **'Tools'→'Board'**
+> [!Warning]
+> Make sure that:
+> - all **`.h`** files are shown in the top tabs
+> - right Arduino model is selected in **'Tools'→'Board'**
 - Press **'Upload'** button in the upper left corner of Arduino IDE window _(or press `Ctrl+U`)_
 
 ## Usage
@@ -119,7 +124,6 @@ Press the button to display the next set of Braille patterns.
 - Add Customization section to README
 - Add Russian variant of README
 - Add tests
-- Add Python script to prepare project for Arduino IDE
 - Optimize `nchar**_t` type for symbols with translation to Braille
 
 ## Contribution
