@@ -10,21 +10,25 @@ This project implements a scalable multi-cell Braille display system using an Ar
 
 ![project breadboard scheme](assets/image.png)
 
+
 ## Table of Contents
 
 - [Preparation](#preparation)
-	- [In simulation via Wokwi](#1-in-simulation-via-wokwi)
-	- [On real Arduino via PlatformIO in VSCode](#2-on-real-arduino-via-platformio-in-vscode)
-	- [On real Arduino via Arduino IDE](#3-on-real-arduino-via-arduino-ide)
+  - [In simulation via Wokwi](#1-in-simulation-via-wokwi)
+  - [On real Arduino via PlatformIO in VSCode](#2-on-real-arduino-via-platformio-in-vscode)
+  - [On real Arduino via Arduino IDE](#3-on-real-arduino-via-arduino-ide)
 - [Usage](#usage)
 - [Features](#features)
+- [Configuration](#configuration)
 - [Todo](#todo)
 - [Contribution](#contribution)
 - [License](#license)
 
+
 ## Preparation
 
 ### **1. In simulation via [Wokwi](https://wokwi.com)**
+
 - Follow the [Wokwi-project link](https://wokwi.com/projects/410634164212519937)
 > [!NOTE]  
 > If Wokwi-project link is broken or project there is corrupted, please report it to [GitHub Issues](https://github.com/dakalamin/braille_display/issues), meanwhile:
@@ -37,6 +41,7 @@ This project implements a scalable multi-cell Braille display system using an Ar
 - Press green **'Play'** button to start the simulation 
 
 ### **2. On real Arduino via [PlatformIO](https://platformio.org) in VSCode**
+
 - Install [Visual Studio Code](https://code.visualstudio.com) and launch it
 - Install [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) extension for VSCode
 - Clone or [download](https://github.com/dakalamin/braille_display/archive/refs/heads/main.zip) and unpack the repository
@@ -53,10 +58,11 @@ This project implements a scalable multi-cell Braille display system using an Ar
 - Press **'Upload'** button in the upper right corner of VSCode window _(or press `Ctrl+Alt+U`)_
 
 ### **3. On real Arduino via Arduino IDE**
+
 - Clone or [download](https://github.com/dakalamin/braille_display/archive/refs/heads/main.zip) and unpack the repository
 - Use an appropriate script from the project's **`scripts/`** folder:
-	- **`toggle.batch`** for Windows
-	- **`toggle.bash`**  for Linux
+  - **`toggle.batch`** for Windows
+  - **`toggle.bash`**  for Linux
 > [!Note]
 > An alternative way is to do it manually:
 > - Rename project's **`src`** folder to **`main`**
@@ -69,19 +75,21 @@ This project implements a scalable multi-cell Braille display system using an Ar
 > - right Arduino model is selected in **'Tools'→'Board'**
 - Press **'Upload'** button in the upper left corner of Arduino IDE window _(or press `Ctrl+U`)_
 
+
 ## Usage
 
 Send messages, that you want to translate and show, to the Serial Monitor.
 
 Press the button to display the next set of Braille patterns.
 
+
 ## Features
 
 - Program can translate following symbols into Braille:
-	- **Latin** alphabet
-	- **Cyrillic** alphabet
-	- **Numbers**
-	- frequently used **Punctuation**
+  - **Latin** alphabet
+  - **Cyrillic** alphabet
+  - **Numbers**
+  - frequently used **Punctuation**
 
 - You can send messages one after another not waiting for the previous ones to be shown - program will try to concatenate them until the `rx_buffer` _(receiving buffer)_ is full
 
@@ -92,32 +100,36 @@ Press the button to display the next set of Braille patterns.
 - Program will keep the last part of the last message displayed until you send a new message and then press the button
 
 - Program can process special cases of translating to Braille (e.g.: punctuation, modifiers, etc.)
-	> <details>
-	> <summary>Examples:</summary>
-	>
-	> - capital modifier is required before capital letters: **`XyZ`** → **<code><ins>⠠</ins>⠭⠽<ins>⠠</ins>⠵</code>**
-	> - numeric modifier is required before numbers: **`a 12`** → **<code>⠁ <ins>⠼</ins>⠁⠃</code>**
-	> - **.** (dot) symbol has different translations:<ul>
-	> - **`N.o`** → **<code>⠠⠝<ins>⠲</ins>⠕</code>** _(a grammatical dot)_
-	> - **`8.9`** → **<code>⠼⠓<ins>⠨</ins>⠊</code>** _(a decimal dot)_
-	> 	- **\*** (asterisk) symbol is translated into a doubled **⠔** Braille pattern: **`5 * 6`**→ **<code>⠼⠑ <ins>⠔⠔</ins> ⠼⠋</code>**
-	> 	- **"** (quote) symbol's Braille pattern alternates on opens and closes: **`m "q" n`** → **<code>⠍ <ins>⠦</ins>⠟<ins>⠴</ins> ⠝</code>**
-	> - quote, unpaired until EOM, can be paired automatically: **`"k`** → **<code>⠦⠅<ins>⠴</ins></code>**
-	> </details>
+  > <details>
+  > <summary>Examples:</summary>
+  >
+  > - capital modifier is required before capital letters: **`XyZ`** → **<code><ins>⠠</ins>⠭⠽<ins>⠠</ins>⠵</code>**
+  > - numeric modifier is required before numbers: **`a 12`** → **<code>⠁ <ins>⠼</ins>⠁⠃</code>**
+  > - **.** (dot) symbol has different translations:<ul>
+  > - **`N.o`** → **<code>⠠⠝<ins>⠲</ins>⠕</code>** _(a grammatical dot)_
+  > - **`8.9`** → **<code>⠼⠓<ins>⠨</ins>⠊</code>** _(a decimal dot)_
+  > 	- **\*** (asterisk) symbol is translated into a doubled **⠔** Braille pattern: **`5 * 6`**→ **<code>⠼⠑ <ins>⠔⠔</ins> ⠼⠋</code>**
+  > 	- **"** (quote) symbol's Braille pattern alternates on opens and closes: **`m "q" n`** → **<code>⠍ <ins>⠦</ins>⠟<ins>⠴</ins> ⠝</code>**
+  > - quote, unpaired until EOM, can be paired automatically: **`"k`** → **<code>⠦⠅<ins>⠴</ins></code>**
+  > </details>
 
 - Program doesn't process characters in advance - it translates the least neccessary amount of characters to fill the Braille display after you press the button
 
 - Program can wait for the next messages if last symbols of the current one don't have enough context to be translated to Braille correctly
-	> <details>
-	> <summary>Examples:</summary>
-	>
-	> First comes **<code>30<ins>.</ins></code>** message
-	> - there is not enough context in the message for the **.** (dot) symbol to be translated to Braille
-	> - program sends **`⠼⠉⠚`** patterns to the display (without **.** symbol) and waits for the next message:
-	> 	- then comes **`25`** message → program shows **<code><ins>⠨</ins>⠃⠑</code>** _(decimal dot)_
-	> 	<br>**-or-**
-	> 	- then comes **` re`** message → program shows **<code><ins>⠲</ins>⠗⠑</code>** _(grammatical dot)_
-	> </details>
+  > <details>
+  > <summary>Examples:</summary>
+  >
+  > First comes **<code>30<ins>.</ins></code>** message
+  > - there is not enough context in the message for the **.** (dot) symbol to be translated to Braille
+  > - program sends **`⠼⠉⠚`** patterns to the display (without **.** symbol) and waits for the next message:
+  > 	- then comes **`25`** message → program shows **<code><ins>⠨</ins>⠃⠑</code>** _(decimal dot)_
+  > 	<br>**-or-**
+  > 	- then comes **` re`** message → program shows **<code><ins>⠲</ins>⠗⠑</code>** _(grammatical dot)_
+  > </details>
+
+
+## Configuration
+
 
 ## Todo
 
@@ -126,9 +138,11 @@ Press the button to display the next set of Braille patterns.
 - Add tests
 - Optimize `nchar**_t` type for symbols with translation to Braille
 
+
 ## Contribution
 
 Feel free to contribute to this project by submitting issues or pull requests!
+
 
 ## License
 
