@@ -42,38 +42,42 @@ This project implements a scalable multi-cell Braille display system using an Ar
 
 ### **2. On real Arduino via [PlatformIO](https://platformio.org) in VSCode**
 
-- Install [Visual Studio Code](https://code.visualstudio.com) and launch it
-- Install [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) extension for VSCode
+- Install [**Visual Studio Code**](https://code.visualstudio.com) and launch it
+- Install [**PlatformIO IDE**](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) extension for **VSCode**
 - Clone or [download](https://github.com/dakalamin/braille_display/archive/refs/heads/main.zip) and unpack the repository
-- Open **`braille_display/`** project's folder with VSCode
+- Open **`braille_display/`** project's folder with **VSCode**
 - Connect your Arduino via USB to your computer
 > [!NOTE]
-> **Arduino Uno** is set as default board in **`platformio.ini`** - if you use different board, do the following:
+> `Arduino Uno` is set as default board in **`platformio.ini`** - if you use different board, do the following:
 > - Click **'View'->'Command Palette...'** _(or press `Ctrl+Shift+P`)_
 > - Paste `> PlatformIO: PlatformIO Home` and press `Enter`
 > - Select **'Projects'** tab on the left
 > - Search for the **braille_display** project and click **'Configure'**
 > - Choose your board in **'Platform Options'->'board'**
 > - Click **'Save'** in the upper right corner
-- Press **'Upload'** button in the upper right corner of VSCode window _(or press `Ctrl+Alt+U`)_
+- Press **'Upload'** button in the upper right corner of **VSCode** window _(or press `Ctrl+Alt+U`)_
 
 ### **3. On real Arduino via Arduino IDE**
 
 - Clone or [download](https://github.com/dakalamin/braille_display/archive/refs/heads/main.zip) and unpack the repository
-- Use an appropriate script from the project's **`scripts/`** folder:
+- Use an appropriate script from the project's **`scripts/`** folder to change project structure _(double click it or call it from console)_:
   - **`toggle.batch`** for Windows
   - **`toggle.bash`**  for Linux
 > [!Note]
+> **ArduinoIDE** demands project **`<name>.ino`** main code file as well as all other code files to be located in the homonymous **`<name>/`** folder
+>
+> You can call this script repeatedly to change the project structure back and forth between **ArduinoIDE** and **PlatformIO** structures
+>
 > An alternative way is to do it manually:
 > - Rename project's **`src`** folder to **`main`**
 > - Rename **`main.cpp`** file to **`main.ino`**
-- Open **`main.ino`** with Arduino IDE
+- Open **`main.ino`** with **Arduino IDE**
 - Connect your Arduino via USB to your computer
 > [!Warning]
 > Make sure that:
 > - all **`.h`** files are shown in the top tabs
 > - right Arduino model is selected in **'Tools'->'Board'**
-- Press **'Upload'** button in the upper left corner of Arduino IDE window _(or press `Ctrl+U`)_
+- Press **'Upload'** button in the upper left corner of **Arduino IDE** window _(or press `Ctrl+U`)_
 
 
 ## Usage
@@ -152,7 +156,7 @@ Setting                 | Category  | Type | Default   | Notes
 
 Configurations priority (from highest to lowest):
 1. **`platformio.ini`**
-    - works only if using `PlatformIO`
+    - works only if using **PlatformIO**
     - add required `-D <setting>=<value>` lines to `build_flags` section
     - if you want to change `BAUD_RATE`, consider editing `monitor_speed` instead
     _<br>(`BAUD_RATE` will be set automatically, ensuring Serial monitor speed is synchronized with it)_
