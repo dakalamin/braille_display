@@ -38,8 +38,8 @@ typedef uint8_t braille_t;
 
 #define AUTOCOUNT_BIT   (1 << 7)
 // if braille cells must be automatically counted
-#define AUTOCOUNT_CELLS false
-// number of braille cells if ther are not automatically counted
+#define AUTOCOUNT_CELLS true
+// number of braille cells if they are not automatically counted
 #define BRAILLE_CELLS   4
 
 #define ANIMATION_ON_START    true
