@@ -53,7 +53,7 @@ This project implements a scalable multi-cell Braille display system using an Ar
 > - Paste `> PlatformIO: PlatformIO Home` and press `Enter`
 > - Select **'Projects'** tab on the left
 > - Search for the **braille_display** project and click **'Configure'**
-> - Choose your board in **'Platform Options'→'board'**
+> - Choose your board in **'Platform Options'->'board'**
 > - Click **'Save'** in the upper right corner
 - Press **'Upload'** button in the upper right corner of VSCode window _(or press `Ctrl+Alt+U`)_
 
@@ -72,7 +72,7 @@ This project implements a scalable multi-cell Braille display system using an Ar
 > [!Warning]
 > Make sure that:
 > - all **`.h`** files are shown in the top tabs
-> - right Arduino model is selected in **'Tools'→'Board'**
+> - right Arduino model is selected in **'Tools'->'Board'**
 - Press **'Upload'** button in the upper left corner of Arduino IDE window _(or press `Ctrl+U`)_
 
 
@@ -103,14 +103,14 @@ Press the button to display the next set of Braille patterns.
   > <details>
   > <summary>Examples:</summary>
   >
-  > - capital modifier is required before capital letters: **`XyZ`** → **<code><ins>⠠</ins>⠭⠽<ins>⠠</ins>⠵</code>**
-  > - numeric modifier is required before numbers: **`a 12`** → **<code>⠁ <ins>⠼</ins>⠁⠃</code>**
+  > - capital modifier is required before capital letters: **`XyZ`** -> **<code><ins>⠠</ins>⠭⠽<ins>⠠</ins>⠵</code>**
+  > - numeric modifier is required before numbers: **`a 12`** -> **<code>⠁ <ins>⠼</ins>⠁⠃</code>**
   > - **.** (dot) symbol has different translations:<ul>
-  > - **`N.o`** → **<code>⠠⠝<ins>⠲</ins>⠕</code>** _(a grammatical dot)_
-  > - **`8.9`** → **<code>⠼⠓<ins>⠨</ins>⠊</code>** _(a decimal dot)_
-  > 	- **\*** (asterisk) symbol is translated into a doubled **⠔** Braille pattern: **`5 * 6`**→ **<code>⠼⠑ <ins>⠔⠔</ins> ⠼⠋</code>**
-  > 	- **"** (quote) symbol's Braille pattern alternates on opens and closes: **`m "q" n`** → **<code>⠍ <ins>⠦</ins>⠟<ins>⠴</ins> ⠝</code>**
-  > - quote, unpaired until EOM, can be paired automatically: **`"k`** → **<code>⠦⠅<ins>⠴</ins></code>**
+  > - **`N.o`** -> **<code>⠠⠝<ins>⠲</ins>⠕</code>** _(a grammatical dot)_
+  > - **`8.9`** -> **<code>⠼⠓<ins>⠨</ins>⠊</code>** _(a decimal dot)_
+  > 	- **\*** (asterisk) symbol is translated into a doubled **⠔** Braille pattern: **`5 * 6`** -> **<code>⠼⠑ <ins>⠔⠔</ins> ⠼⠋</code>**
+  > 	- **"** (quote) symbol's Braille pattern alternates on opens and closes: **`m "q" n`** -> **<code>⠍ <ins>⠦</ins>⠟<ins>⠴</ins> ⠝</code>**
+  > - quote, unpaired until EOM, can be paired automatically: **`"k`** -> **<code>⠦⠅<ins>⠴</ins></code>**
   > </details>
 
 - Program doesn't process characters in advance - it translates the least neccessary amount of characters to fill the Braille display after you press the button
@@ -122,9 +122,9 @@ Press the button to display the next set of Braille patterns.
   > First comes **<code>30<ins>.</ins></code>** message
   > - there is not enough context in the message for the **.** (dot) symbol to be translated to Braille
   > - program sends **`⠼⠉⠚`** patterns to the display (without **.** symbol) and waits for the next message:
-  > 	- then comes **`25`** message → program shows **<code><ins>⠨</ins>⠃⠑</code>** _(decimal dot)_
+  > 	- then comes **`25`** message -> program shows **<code><ins>⠨</ins>⠃⠑</code>** _(decimal dot)_
   > 	<br>**-or-**
-  > 	- then comes **` re`** message → program shows **<code><ins>⠲</ins>⠗⠑</code>** _(grammatical dot)_
+  > 	- then comes **` re`** message -> program shows **<code><ins>⠲</ins>⠗⠑</code>** _(grammatical dot)_
   > </details>
 
 
