@@ -12,7 +12,7 @@ void _shiftOut(byte pattern=0) {
 
 void countBrailleCells() {
 	#if AUTOCOUNT_CELLS
-		_shiftOut(AUTOCOUNT_BIT | ((ANIMATION_ON_START) ? NA : EMPTY));
+		_shiftOut(AUTOCOUNT_BITMASK | ((ANIMATION_ON_START) ? NA : EMPTY));
 
 		for (brailleCells = 0; digitalRead(AUTO_PIN); brailleCells++) {
 			delay((ANIMATION_ON_START) ? ANIMATION_MS_PER_CELL : MIN_DELAY_MS);

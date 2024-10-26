@@ -45,8 +45,8 @@ typedef uint8_t braille_t;
 	6 if pin is Q6
 	7 if pin is Q7
 */
-#define AUTOCOUNT_PIN 7
-#define AUTOCOUNT_BIT (1 << AUTOCOUNT_PIN)
+#define AUTOCOUNT_BIT 7
+#define AUTOCOUNT_BITMASK (1 << AUTOCOUNT_BIT)
 
 #define ANIMATION_ON_START    true
 #define ANIMATION_MS_PER_CELL 500

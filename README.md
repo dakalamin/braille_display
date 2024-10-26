@@ -139,7 +139,7 @@ You can configure the project to your liking:
 Setting                 | Category  | Type | Default   | Notes
 ----------------------: |---------- | ---- | --------- | :----
 `BUTTON_PIN`            | **`PIN`** | uint | `7`       | -
-`AUTO_PIN`              | **`PIN`** | uint | `8`       | 74HC595 shift register - pin `Q7`<br>_alternatively, can be pin_ `Q6`
+`AUTO_PIN`              | **`PIN`** | uint | `8`       | pin that receives `AUTOCOUNT` signal
 `DATA_PIN`              | **`PIN`** | uint | `11`      | 74HC595 shift register - pin `DS`
 `LATCH_PIN`             | **`PIN`** | uint | `12`      | 74HC595 shift register - pin `ST_CP`
 `CLOCK_PIN`             | **`PIN`** | uint | `13`      | 74HC595 shift register - pin `SH_CP`
@@ -151,7 +151,7 @@ Setting                 | Category  | Type | Default   | Notes
 `BUTTON_CYCLE_MS`       | **`BTN`** | uint | `1000`    | delay between autoclicks while button is kept pressed _(in ms)_
 `BRAILLE_CELLS`         | **`CEL`** | uint | `4`       | number of Braille cells if they are not automatically counted
 `AUTOCOUNT_CELLS`       | **`CEL`** | bool | `true`    | if Braille cells must be automatically counted
-`AUTOCOUNT_PIN`         | **`CEL`** | uint | `7`       | shift register pin number which passes `AUTOCOUNT` signal<br>`6` if pin is `Q6`<br>`7` if pin is `Q7`
+`AUTOCOUNT_BIT`         | **`CEL`** | uint | `7`       | bit number that contains `AUTOCOUNT` signal passed to `AUTO_PIN`<br>`6`<sup>th</sup> bit corresponds to `Q6` shift register pin<br>`7`<sup>th</sup> bit - to `Q7`
 `ANIMATION_ON_START`    | **`ANM`** | bool | `true`    | if to play animation on start
 `ANIMATION_MS_PER_CELL` | **`ANM`** | uint | `500`     | delay between each animation frame _(in ms)_
 
