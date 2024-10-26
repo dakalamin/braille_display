@@ -22,8 +22,9 @@
 // #define BUTTON_CLICK_MS  // uint
 // #define BUTTON_CYCLE_MS  // uint
 
-// #define AUTOCOUNT_CELLS  // bool
 // #define   BRAILLE_CELLS  // uint
+// #define AUTOCOUNT_CELLS  // bool
+// #define AUTOCOUNT_BIT    // uint
 
 // #define ANIMATION_ON_START     // bool
 // #define ANIMATION_MS_PER_CELL  // uint
