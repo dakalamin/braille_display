@@ -16,7 +16,7 @@ This project implements a scalable multi-cell Braille display system using an Ar
 - [Preparation](#preparation)
   - [In simulation via Wokwi](#1-in-simulation-via-wokwi)
   - [On real Arduino via PlatformIO in VSCode](#2-on-real-arduino-via-platformio-in-vscode)
-  - [On real Arduino via Arduino IDE](#3-on-real-arduino-via-arduino-ide)
+  - [On real Arduino via ArduinoIDE](#3-on-real-arduino-via-arduinoide)
 - [Usage](#usage)
 - [Features](#features)
 - [Configuration](#configuration)
@@ -42,10 +42,10 @@ This project implements a scalable multi-cell Braille display system using an Ar
 
 ### **2. On real Arduino via [PlatformIO](https://platformio.org) in VSCode**
 
-- Install [**Visual Studio Code**](https://code.visualstudio.com) and launch it
-- Install [**PlatformIO IDE**](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) extension for **VSCode**
+- Install [Visual Studio Code](https://code.visualstudio.com) and launch it
+- Install [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) extension for VSCode
 - Clone or [download](https://github.com/dakalamin/braille_display/archive/refs/heads/main.zip) and unpack the repository
-- Open **`braille_display/`** project's folder with **VSCode**
+- Open **`braille_display/`** project's folder with VSCode
 - Connect your Arduino via USB to your computer
 > [!NOTE]
 > `Arduino Uno` is set as default board in **`platformio.ini`** - if you use different board, do the following:
@@ -55,29 +55,29 @@ This project implements a scalable multi-cell Braille display system using an Ar
 > - Search for the **braille_display** project and click **'Configure'**
 > - Choose your board in **'Platform Options'->'board'**
 > - Click **'Save'** in the upper right corner
-- Press **'Upload'** button in the upper right corner of **VSCode** window _(or press `Ctrl+Alt+U`)_
+- Press **'Upload'** button in the upper right corner of VSCode window _(or press `Ctrl+Alt+U`)_
 
-### **3. On real Arduino via Arduino IDE**
+### **3. On real Arduino via ArduinoIDE**
 
 - Clone or [download](https://github.com/dakalamin/braille_display/archive/refs/heads/main.zip) and unpack the repository
 - Use an appropriate script from the project's **`scripts/`** folder to change project structure _(double click it or call it from console)_:
   - **`toggle.batch`** for Windows
   - **`toggle.bash`**  for Linux
 > [!Note]
-> **ArduinoIDE** demands project **`<name>.ino`** main code file as well as all other code files to be located in the homonymous **`<name>/`** folder
+> The reason for this is that ArduinoIDE demands project **`<name>.ino`** main code file as well as all other code files to be located in the homonymous **`<name>/`** folder
 >
-> You can call this script repeatedly to change the project structure back and forth between **ArduinoIDE** and **PlatformIO** structures
+> You can call this script repeatedly to toggle back and forth between ArduinoIDE and PlatformIO project structures
 >
 > An alternative way is to do it manually:
-> - Rename project's **`src`** folder to **`main`**
+> - Rename project's **`src/`** folder to **`main/`**
 > - Rename **`main.cpp`** file to **`main.ino`**
-- Open **`main.ino`** with **Arduino IDE**
+- Open **`main.ino`** with ArduinoIDE
 - Connect your Arduino via USB to your computer
 > [!Warning]
 > Make sure that:
 > - all **`.h`** files are shown in the top tabs
-> - right Arduino model is selected in **'Tools'->'Board'**
-- Press **'Upload'** button in the upper left corner of **Arduino IDE** window _(or press `Ctrl+U`)_
+> - board model selected in **'Tools'->'Board'** matches your Arduino model
+- Press **'Upload'** button in the upper left corner of ArduinoIDE window _(or press `Ctrl+U`)_
 
 
 ## Usage
@@ -109,12 +109,12 @@ Press the button to display the next set of Braille patterns.
   >
   > - capital modifier is required before capital letters: **`XyZ`** -> **<code><ins>⠠</ins>⠭⠽<ins>⠠</ins>⠵</code>**
   > - numeric modifier is required before numbers: **`a 12`** -> **<code>⠁ <ins>⠼</ins>⠁⠃</code>**
-  > - **.** (dot) symbol has different translations:<ul>
-  > - **`N.o`** -> **<code>⠠⠝<ins>⠲</ins>⠕</code>** _(a grammatical dot)_
-  > - **`8.9`** -> **<code>⠼⠓<ins>⠨</ins>⠊</code>** _(a decimal dot)_
-  > 	- **\*** (asterisk) symbol is translated into a doubled **⠔** Braille pattern: **`5 * 6`** -> **<code>⠼⠑ <ins>⠔⠔</ins> ⠼⠋</code>**
-  > 	- **"** (quote) symbol's Braille pattern alternates on opens and closes: **`m "q" n`** -> **<code>⠍ <ins>⠦</ins>⠟<ins>⠴</ins> ⠝</code>**
-  > - quote, unpaired until EOM, can be paired automatically: **`"k`** -> **<code>⠦⠅<ins>⠴</ins></code>**
+  > - **.** (dot) symbol has different translations:
+  >   - **`N.o`** -> **<code>⠠⠝<ins>⠲</ins>⠕</code>** _(a grammatical dot)_
+  >   - **`8.9`** -> **<code>⠼⠓<ins>⠨</ins>⠊</code>** _(a decimal dot)_
+  > - **\*** (asterisk) symbol is translated into a doubled **⠔** Braille pattern: **`5 * 6`** -> **<code>⠼⠑ <ins>⠔⠔</ins> ⠼⠋</code>**
+  > - **"** (quote) symbol's Braille pattern alternates on opens and closes: **`m "q" n`** -> **<code>⠍ <ins>⠦</ins>⠟<ins>⠴</ins> ⠝</code>**
+  > - **"** (quote) symbol, unpaired until EOM, is paired automatically: **`"k`** -> **<code>⠦⠅<ins>⠴</ins></code>**
   > </details>
 
 - Program doesn't process characters in advance - it translates the least neccessary amount of characters to fill the Braille display after you press the button
@@ -126,9 +126,9 @@ Press the button to display the next set of Braille patterns.
   > First comes **<code>30<ins>.</ins></code>** message
   > - there is not enough context in the message for the **.** (dot) symbol to be translated to Braille
   > - program sends **`⠼⠉⠚`** patterns to the display (without **.** symbol) and waits for the next message:
-  > 	- then comes **`25`** message -> program shows **<code><ins>⠨</ins>⠃⠑</code>** _(decimal dot)_
-  > 	<br>**-or-**
-  > 	- then comes **` re`** message -> program shows **<code><ins>⠲</ins>⠗⠑</code>** _(grammatical dot)_
+  >   - then comes **`25`** message -> program shows **<code><ins>⠨</ins>⠃⠑</code>** _(decimal dot)_
+  >   <br>**-or-**
+  >   - then comes **` re`** message -> program shows **<code><ins>⠲</ins>⠗⠑</code>** _(grammatical dot)_
   > </details>
 
 
@@ -146,7 +146,7 @@ Setting                 | Category  | Type | Default   | Notes
 `BAUD_RATE`             | **`SRL`** | uint | `9600`    | Serial speed
 `SERIAL_ECHO`           | **`SRL`** | bool | `true`    | if symbols must be printed to Serial as they are being sent to Braille display
 `LF_IS_EOM`             | **`SRL`** | bool | `true`    | Linefeed is EOM<br>_if false, messages before and after LF symbol are concatinated_
-`SERIAL_NA_IS_EOM`      | **`SRL`** | bool | `false`   | Serial Not Available is EOM<br>_if false, messages before and after Serial not available are concatinated_
+`SERIAL_NA_IS_EOM`      | **`SRL`** | bool | `false`   | Serial Not Available is EOM<br>_if false, messages before and after Serial-not-available event are concatinated_
 `BUTTON_CLICK_MS`       | **`BTN`** | uint | `100`     | min delay between consecutive clicks to prevent jitter _(in ms)_
 `BUTTON_CYCLE_MS`       | **`BTN`** | uint | `1000`    | delay between autoclicks while button is kept pressed _(in ms)_
 `AUTOCOUNT_CELLS`       | **`CEL`** | bool | `true`    | if Braille cells must be automatically counted
@@ -156,17 +156,17 @@ Setting                 | Category  | Type | Default   | Notes
 
 Configurations priority (from highest to lowest):
 1. **`platformio.ini`**
-    - works only if using **PlatformIO**
-    - add required `-D <setting>=<value>` lines to `build_flags` section
-    - if you want to change `BAUD_RATE`, consider editing `monitor_speed` instead
-    _<br>(`BAUD_RATE` will be set automatically, ensuring Serial monitor speed is synchronized with it)_
+  - **\[ works only if you use PlatformIO \]**
+  - add required `-D <setting>=<value>` lines to `build_flags` section
+  - if you want to change `BAUD_RATE`, consider editing `monitor_speed` instead
+  _<br>(`BAUD_RATE` will be set automatically, ensuring Serial monitor speed is synchronized with it)_
 2. **`src/custom_config.h`**
-    - **THE PREFERRED WAY**
-    - uncomment neccessary defines and set their values
-    - keep in mind that settings from **`platformio.ini`** can override settings defined here
+  - **\[ the preferred way \]**
+  - uncomment neccessary defines and set their values
+  - keep in mind that settings from **`platformio.ini`** can override settings defined here
 3. **`src/config.h`**
-    - **PLEASE DO NOT EDIT THIS FILE**
-    - contains default setting values
+  - **\[ please do not modify this file \]**
+  - contains default setting values
 
 
 ## Todo
