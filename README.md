@@ -82,9 +82,9 @@ This project implements a scalable multi-cell Braille display system using an Ar
 
 ## Usage
 
-Send messages, that you want to translate and show, to the Serial Monitor.
+Send messages, that you want to translate and show, to the Serial Monitor
 
-Press the button to display the next set of Braille patterns.
+Press the button to display the next set of Braille patterns
 
 
 ## Features
@@ -172,9 +172,9 @@ Configurations priority (from highest to lowest):
 
 ## Todo
 
-- Add Russian variant of README
+- Add translations to README
 - Add tests
-- Optimize `nchar**_t` type for symbols with translation to Braille
+- Add WokwiCI action
 
 
 ## Contribution
