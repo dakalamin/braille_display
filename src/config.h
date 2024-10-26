@@ -36,17 +36,25 @@ typedef uint8_t braille_t;
 #define BUTTON_CLICK_MS 100
 #define BUTTON_CYCLE_MS 1000
 
-#define AUTOCOUNT_BIT (1 << 7)
-// if braille cells must be automatically counted
-#define AUTOCOUNT_CELLS true
-// number of braille cells if they are not automatically counted
+// Number of braille cells if they are not automatically counted
 #define BRAILLE_CELLS 4
+// If braille cells must be automatically counted
+#define AUTOCOUNT_CELLS true
+/*
+	Shift register pin number which passes AUTOCOUNT signal
+	6 if pin is Q6
+	7 if pin is Q7
+*/
+#define AUTOCOUNT_PIN 7
+#define AUTOCOUNT_BIT (1 << AUTOCOUNT_PIN)
 
 #define ANIMATION_ON_START    true
 #define ANIMATION_MS_PER_CELL 500
 
-// if symbols must be printed to Serial
-// as they are being sent to braille display
+/*
+	if symbols must be printed to Serial
+	as they are being sent to braille display
+*/
 #define SERIAL_ECHO true
 
 /*

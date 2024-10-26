@@ -145,12 +145,13 @@ Setting                 | Category  | Type | Default   | Notes
 `CLOCK_PIN`             | **`PIN`** | uint | `13`      | 74HC595 shift register - pin `SH_CP`
 `BAUD_RATE`             | **`SRL`** | uint | `9600`    | Serial speed
 `SERIAL_ECHO`           | **`SRL`** | bool | `true`    | if symbols must be printed to Serial as they are being sent to Braille display
-`LF_IS_EOM`             | **`SRL`** | bool | `true`    | Linefeed is EOM<br>_if false, messages before and after LF symbol are concatinated_
-`SERIAL_NA_IS_EOM`      | **`SRL`** | bool | `false`   | Serial Not Available is EOM<br>_if false, messages before and after Serial-not-available event are concatinated_
+`LF_IS_EOM`             | **`SRL`** | bool | `true`    | Linefeed is End-Of-Message<br>_if false, messages before and after LF symbol are concatinated_
+`SERIAL_NA_IS_EOM`      | **`SRL`** | bool | `false`   | Serial Not Available is End-Of-Message<br>_if false, messages before and after Serial-not-available event are concatinated_
 `BUTTON_CLICK_MS`       | **`BTN`** | uint | `100`     | min delay between consecutive clicks to prevent jitter _(in ms)_
 `BUTTON_CYCLE_MS`       | **`BTN`** | uint | `1000`    | delay between autoclicks while button is kept pressed _(in ms)_
-`AUTOCOUNT_CELLS`       | **`CEL`** | bool | `true`    | if Braille cells must be automatically counted
 `BRAILLE_CELLS`         | **`CEL`** | uint | `4`       | number of Braille cells if they are not automatically counted
+`AUTOCOUNT_CELLS`       | **`CEL`** | bool | `true`    | if Braille cells must be automatically counted
+`AUTOCOUNT_PIN`         | **`CEL`** | uint | `7`       | shift register pin number which passes `AUTOCOUNT` signal<br>`6` if pin is `Q6`<br>`7` if pin is `Q7`
 `ANIMATION_ON_START`    | **`ANM`** | bool | `true`    | if to play animation on start
 `ANIMATION_MS_PER_CELL` | **`ANM`** | uint | `500`     | delay between each animation frame _(in ms)_
 

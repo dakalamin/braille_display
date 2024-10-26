@@ -5,7 +5,8 @@
 
 enum BrailleSpecial : braille_t {
 	NA    = 0b111111,          // ⠿
-	EMPTY = 1 << 6,            // ⠀ (not equal to 0)
+	EMPTY =                    // ⠀ (not equal to 0)
+		UINT8_MAX & (~(NA | AUTOCOUNT_BIT)),
 
 	DECADE_2 = 0b000100,       // ⠄
 	DECADE_3 = 0b100100,       // ⠤
