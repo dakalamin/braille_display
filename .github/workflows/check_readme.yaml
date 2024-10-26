@@ -4,7 +4,7 @@ on:
   workflow_call:
   push:
     paths:
-      - '.github/workflows/readme.yaml'
+      - '.github/workflows/check_readme.yaml'
       - 'README.md'
   schedule:
   # run twice a month (on 1st and 15th of every month at 12:00 UTC)
