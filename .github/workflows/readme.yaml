@@ -20,6 +20,7 @@ jobs:
   badges:
     runs-on: ubuntu-latest
     needs: linkinator
+    if: '!cancelled()'
     steps:
       - name: Set values for failure badge
         if: ${{ needs.linkinator.result == 'failure' }}
