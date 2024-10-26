@@ -6,7 +6,7 @@
 [![GitHub Release](https://img.shields.io/github/v/release/dakalamin/braille_display?sort=semver&display_name=tag&style=flat-square&label=Latest%20release)](https://github.com/dakalamin/braille_display/releases)
 [![GitHub License](https://img.shields.io/github/license/dakalamin/braille_display?style=flat-square&label=License)](#license)
 
-This project implements a scalable multi-cell Braille display system using an Arduino - it converts input characters into their corresponding Braille patterns, enabling accessibility for visually impaired users
+This project implements a scalable multi-cell Braille display system using an Arduino - it converts input characters into their corresponding Braille patterns, providing accessibility for visually impaired users
 
 ![project breadboard scheme](assets/diagram.png)
 
@@ -32,7 +32,7 @@ This project implements a scalable multi-cell Braille display system using an Ar
 - Follow the [Wokwi-project link](https://wokwi.com/projects/410634164212519937)
 > [!NOTE]  
 > If Wokwi-project link is broken or project there is corrupted, please report it to [GitHub Issues](https://github.com/dakalamin/braille_display/issues), meanwhile:
-> - Clone or [download](https://github.com/dakalamin/braille_display/archive/refs/heads/main.zip) and unpack the repository
+> - Clone or [download](https://github.com/dakalamin/braille_display/releases/latest) and unpack the repository
 > - Start a [blank Wokwi-project](https://wokwi.com/projects/new/blank)
 > - Select **`diagram.json`** tab
 > - Press ⏷ button to the right of **'Library Manager'** tab, then - **'Delete'** and confirm
@@ -44,7 +44,7 @@ This project implements a scalable multi-cell Braille display system using an Ar
 
 - Install [Visual Studio Code](https://code.visualstudio.com) and launch it
 - Install [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) extension for VSCode
-- Clone or [download](https://github.com/dakalamin/braille_display/archive/refs/heads/main.zip) and unpack the repository
+- Clone or [download](https://github.com/dakalamin/braille_display/releases/latest) and unpack the repository
 - Open **`braille_display/`** project's folder with VSCode
 - Connect your Arduino via USB to your computer
 > [!NOTE]
@@ -59,7 +59,7 @@ This project implements a scalable multi-cell Braille display system using an Ar
 
 ### **3. On real Arduino via ArduinoIDE**
 
-- Clone or [download](https://github.com/dakalamin/braille_display/archive/refs/heads/main.zip) and unpack the repository
+- Clone or [download](https://github.com/dakalamin/braille_display/releases/latest) and unpack the repository
 - Use an appropriate script from the project's **`scripts/`** folder to change project structure _(double click it or call it from console)_:
   - **`toggle.batch`** for Windows
   - **`toggle.bash`**  for Linux
@@ -110,8 +110,8 @@ Press the button to display the next set of Braille patterns
   > - capital modifier is required before capital letters: **`XyZ`** -> **<code><ins>⠠</ins>⠭⠽<ins>⠠</ins>⠵</code>**
   > - numeric modifier is required before numbers: **`a 12`** -> **<code>⠁ <ins>⠼</ins>⠁⠃</code>**
   > - **.** (dot) symbol has different translations:
-  >   - **`N.o`** -> **<code>⠠⠝<ins>⠲</ins>⠕</code>** _(a grammatical dot)_
-  >   - **`8.9`** -> **<code>⠼⠓<ins>⠨</ins>⠊</code>** _(a decimal dot)_
+  >   - **`N.o`** -> **<code>⠠⠝<ins>⠲</ins>⠕</code>** _(grammatical dot)_
+  >   - **`8.9`** -> **<code>⠼⠓<ins>⠨</ins>⠊</code>** _(decimal dot)_
   > - **\*** (asterisk) symbol is translated into a doubled **⠔** Braille pattern: **`5 * 6`** -> **<code>⠼⠑ <ins>⠔⠔</ins> ⠼⠋</code>**
   > - **"** (quote) symbol's Braille pattern alternates on opens and closes: **`m "q" n`** -> **<code>⠍ <ins>⠦</ins>⠟<ins>⠴</ins> ⠝</code>**
   > - **"** (quote) symbol, unpaired until EOM, is paired automatically: **`"k`** -> **<code>⠦⠅<ins>⠴</ins></code>**
@@ -157,17 +157,17 @@ Setting                 | Category  | Type | Default   | Notes
 
 Configurations priority (from highest to lowest):
 1. **`platformio.ini`**
-  - **\[ works only if you use PlatformIO \]**
-  - add required `-D <setting>=<value>` lines to `build_flags` section
-  - if you want to change `BAUD_RATE`, consider editing `monitor_speed` instead
-  _<br>(`BAUD_RATE` will be set automatically, ensuring Serial monitor speed is synchronized with it)_
+    - **\[ works only if you use PlatformIO \]**
+    - add required `-D <setting>=<value>` lines to `build_flags` section
+    - if you want to change `BAUD_RATE`, consider editing `monitor_speed` instead
+    _<br>(`BAUD_RATE` will be set automatically, ensuring Serial monitor speed is synchronized with it)_
 2. **`src/custom_config.h`**
-  - **\[ the preferred way \]**
-  - uncomment neccessary defines and set their values
-  - keep in mind that settings from **`platformio.ini`** can override settings defined here
+    - **\[ the preferred way \]**
+    - uncomment neccessary defines and set their values
+    - keep in mind that settings from **`platformio.ini`** can override settings defined here
 3. **`src/config.h`**
-  - **\[ please do not modify this file \]**
-  - contains default setting values
+    - **\[ please do not modify this file \]**
+    - contains default setting values
 
 
 ## Todo
