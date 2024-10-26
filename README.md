@@ -8,7 +8,7 @@
 
 This project implements a scalable multi-cell Braille display system using an Arduino - it converts input characters into their corresponding Braille patterns, enabling accessibility for visually impaired users
 
-![project breadboard scheme](assets/image.png)
+![project breadboard scheme](assets/diagram.png)
 
 
 ## Table of Contents
