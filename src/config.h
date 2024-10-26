@@ -24,11 +24,11 @@ typedef uint32_t nchar32_t;
 typedef uint8_t braille_t;
 
 
-#define AUTO_PIN   7
-#define BUTTON_PIN 8
-#define DATA_PIN   11  //    DS pin of 74HC595 shift register
-#define LATCH_PIN  12  // ST_CP pin of 74HC595 shift register
-#define CLOCK_PIN  13  // SH_CP pin of 74HC595 shift register
+#define BUTTON_PIN 7
+#define   AUTO_PIN 8
+#define   DATA_PIN 11  //    DS pin of 74HC595 shift register
+#define  LATCH_PIN 12  // ST_CP pin of 74HC595 shift register
+#define  CLOCK_PIN 13  // SH_CP pin of 74HC595 shift register
 
 #define BAUD_RATE 9600
 #define MIN_DELAY_MS 2
@@ -36,11 +36,11 @@ typedef uint8_t braille_t;
 #define BUTTON_CLICK_MS 100
 #define BUTTON_CYCLE_MS 1000
 
-#define AUTOCOUNT_BIT   (1 << 7)
+#define AUTOCOUNT_BIT (1 << 7)
 // if braille cells must be automatically counted
 #define AUTOCOUNT_CELLS true
 // number of braille cells if they are not automatically counted
-#define BRAILLE_CELLS   4
+#define BRAILLE_CELLS 4
 
 #define ANIMATION_ON_START    true
 #define ANIMATION_MS_PER_CELL 500
@@ -54,7 +54,7 @@ typedef uint8_t braille_t;
 	If 0, concatinates messages before and after LF symbol
 
 	e.g.: message is "x1[LF]0"
-	if 0 ⟶ "x10" ⟶ ⠭⠼⠁⠚   
+	if 0 ⟶ "x10"    ⟶ ⠭⠼⠁⠚   
 	if 1 ⟶ "x1"|"0" ⟶ ⠭⠼⠁|⠼⠚ 
 */
 #define LF_IS_EOM true
@@ -63,7 +63,7 @@ typedef uint8_t braille_t;
 	If 0, concatinates messages before and after Serial not available
 
 	e.g.: message is "x1[Serial NA]0"
-	if 0 ⟶ "x10" ⟶ ⠭⠼⠁⠚   
+	if 0 ⟶ "x10"    ⟶ ⠭⠼⠁⠚   
 	if 1 ⟶ "x1"|"0" ⟶ ⠭⠼⠁|⠼⠚ 
 */
 #define SERIAL_NA_IS_EOM false

@@ -138,8 +138,8 @@ You can configure the project to your liking:
 
 Setting                 | Category  | Type | Default   | Notes
 ----------------------: |---------- | ---- | --------- | :----
-`AUTO_PIN`              | **`PIN`** | uint | `7`       | 74HC595 shift register - pin `Q7`<br>_alternatively, can be pin_ `Q6`
-`BUTTON_PIN`            | **`PIN`** | uint | `8`       | -
+`BUTTON_PIN`            | **`PIN`** | uint | `7`       | -
+`AUTO_PIN`              | **`PIN`** | uint | `8`       | 74HC595 shift register - pin `Q7`<br>_alternatively, can be pin_ `Q6`
 `DATA_PIN`              | **`PIN`** | uint | `11`      | 74HC595 shift register - pin `DS`
 `LATCH_PIN`             | **`PIN`** | uint | `12`      | 74HC595 shift register - pin `ST_CP`
 `CLOCK_PIN`             | **`PIN`** | uint | `13`      | 74HC595 shift register - pin `SH_CP`
